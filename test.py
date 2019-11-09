@@ -17,7 +17,6 @@ def write_file(file, content):
 
 #analyze file and output result
 def rewrite_code(file, lhead, rhead, thead):
-    flag = 0
     lflag = 0
     rflag = 0
 
@@ -31,18 +30,20 @@ def rewrite_code(file, lhead, rhead, thead):
 
             #same contents
             if(contents[0] == contents[1]):
-                if(lflag != 0 or rflag != 0):
+                if(lflag != 0 and rflag == 0):
                     write_file(file, thead)
                     lflag = 0
-                    rflag = 0
-
+                    # rflag = 0
+                if(lflag != 0 and rflag != 0):
+                    lflag = 0
                 if(rflag != 0):
                     write_file(file, thead)
-                    write_file(file, rhead)
-                    write_file(file, "\n".join(content_temp))
-                    write_file(file, thead)
+                    if(len(content_temp)):
+                        write_file(file, rhead)
+                        write_file(file, "\n".join(content_temp))
+                        write_file(file, thead)
                     rflag = 0
-                    # content_temp.clear()
+                    content_temp.clear()
 
                 write_file(file, contents[0])
 
@@ -56,7 +57,7 @@ def rewrite_code(file, lhead, rhead, thead):
                         write_file(file, "\n".join(content_temp))
                         write_file(file, thead)
                     rflag = 0
-                    # content_temp.clear()
+                    content_temp.clear()
 
                 if (lflag == 0 and contents[0] != ''):
                     write_file(file, lhead)

@@ -1,0 +1,2 @@
+pyinstaller -F -i crack.ico -w VIPCracker.py -p CholenSql.py -p ImgICon.py -p VIPGUI.py 
+pyinstaller -F -i D:\coding\python\trace\1.ico D:\coding\python\trace\trace.py -p D:\coding\python\trace\read_file.py -p D:\coding\python\trace\write_file.py 

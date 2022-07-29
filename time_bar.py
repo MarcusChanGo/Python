@@ -1,4 +1,4 @@
-#!/usr/bin python
+#!/usr/local/bin/python3
 # --*-- coding:utf-8 --*--
 
 import time
@@ -12,7 +12,7 @@ from tqdm import tqdm
 #     p = round((i + 1) * 100 / N)
 #     duration = round(time.clock() - st, 2)
 #     remaining = round(duration * 100 / (0.01 + p) - duration, 2)
-#     print("进度:{0}%,已耗时:{1}s,预计剩余时间:{2}s".format(p, duration, remaining), end='\r')
+#     print("进度:{0}%,已耗时:{1}s,预�?�剩余时�?:{2}s".format(p, duration, remaining), end='\r')
 #     time.sleep(0.01)
 
 
@@ -49,7 +49,7 @@ from tqdm import tqdm
 
 # def viewBar(i):
 #     """
-#     进度条效果
+#     进度条效�?
 #     :param i:
 #     :return:
 #     """

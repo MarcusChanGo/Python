@@ -1,5 +1,6 @@
-#!/usr/env python
+#!/usr/local/bin/python3
 # coding: utf-8 
+
 import paramiko
 import os
 from stat import S_ISDIR as isdir

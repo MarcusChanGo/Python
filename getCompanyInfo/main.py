@@ -4,14 +4,15 @@
 from read_file import readWriteFile;
 from getInfo import Post;
 from configparser import ConfigParser
+import codecs
 
 
 if __name__=="__main__":
     conf = ConfigParser();
-    conf.read('config.ini');
+    conf.readfp(codecs.open('config.ini','r','utf-8'));
 
     # 获取公司名称和统一社会信用代码
-    companyName = readWriteFile.readFile(conf['FILE']['inputfile']);
+    companyName = readWriteFile.readFile(conf.get('FILE','inputfile'));
     companyNameList = companyName['客户名称'].tolist();
     socialCodeList = companyName['统一社会信用代码'].tolist();
 
@@ -66,7 +67,7 @@ if __name__=="__main__":
     
         resultData.append(respData);
 
-    fileName = conf['FILE']['outputfile'];
+    fileName = conf.get('FILE','outputfile');
     readWriteFile.pd_toExcel(resultData, fileName);
     print("获取数据完成！！！");
     

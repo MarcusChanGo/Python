@@ -6,7 +6,6 @@ import pandas as pd
 
 class readWriteFile:  
     def readFile(file_name):
-        print("begin read!!");
         result = pd.read_excel(file_name, sheet_name='Sheet1');
         return result;
     

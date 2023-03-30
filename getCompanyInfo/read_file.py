@@ -1,4 +1,4 @@
-#!/usr/bin/python3外部数据平台提取对公客户数据表样 .xlsx
+#!/usr/bin/python3
 # coding: utf-8
 
 import pandas as pd

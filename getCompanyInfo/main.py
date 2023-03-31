@@ -17,6 +17,7 @@ if __name__=="__main__":
     socialCodeList = companyName['统一社会信用代码'].tolist();
 
     resultData = [];
+    isnull_list = [];
     # 通过公司名称和统一社会信用代码获取其他信息
     for name, code in zip(companyNameList,socialCodeList):
         reqData = {
@@ -26,8 +27,12 @@ if __name__=="__main__":
         reqData["model"] = "ENTINFO";
         respData = {};
         # 调用外部数据平台服务接口（企业基本信息ENTINFO）
-        TDATA = Post.sendPost(reqData);
         print("调用企业基本信息服务");
+        TDATA = Post.sendPost(reqData);
+        if len(TDATA) == 0:
+            isnull_list.append(name);
+            continue;
+        
         respData['companyname'] = name;
         respData['creditcode'] = code;
         respData['creditcode_a'] = TDATA[0]['CREDITCODE'];
@@ -69,5 +74,8 @@ if __name__=="__main__":
 
     fileName = conf.get('FILE','outputfile');
     readWriteFile.pd_toExcel(resultData, fileName);
+
+    if len(isnull_list) != 0:
+        readWriteFile.writeFile(isnull_list, "无信息的公司列表.xlsx")
     print("获取数据完成！！！");
     
